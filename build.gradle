@@ -25,8 +25,10 @@ repositories {
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	compile('org.springframework.boot:spring-boot-starter-mustache')
+	compile('pl.allegro.tech.boot:handlebars-spring-boot-starter:0.2.15')
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile group: 'org.webjars', name: 'bootstrap', version: '3.3.7-1'
+	compile group: 'org.webjars.bower', name: 'jquery', version: '3.2.1'
 	runtime('org.springframework.boot:spring-boot-devtools')
 	runtime('com.h2database:h2')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
