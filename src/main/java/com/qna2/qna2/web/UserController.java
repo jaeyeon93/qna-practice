@@ -29,9 +29,14 @@ public class UserController {
         return "list";
     }
 
-    @GetMapping("/users/{userId}")
-    public String getUser(@PathVariable String userId ,Model model) {
-            model.addAttribute("user", userId);
+    @RequestMapping("/users/{userId}")
+    public String getUser(@PathVariable String userId , Model model) {
+            for (User user : users)
+                if (user.getUserId().equals(userId))
+                    model.addAttribute("user", user);
             return "profile";
-        }
     }
+}
+
+
+
