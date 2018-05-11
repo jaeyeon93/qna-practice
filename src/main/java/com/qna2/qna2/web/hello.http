@@ -1,0 +1,17 @@
+## 기본사용
+GET localhost:8080/
+###
+
+## post테스트
+
+POST localhost:8080/create
+Content-Type: application/json
+
+{
+    "userId" : "hello.http",
+    "password" : "12345",
+    "name" : "jaeyeon93",
+    "email" : "foodehtk@naver.com"
+}
+
+###
