@@ -30,7 +30,7 @@ public class UserController {
     @GetMapping("/user/list")
     public String list(Model model) {
         model.addAttribute("users", userRepository.findAll());
-        return "list";
+        return "/user/list";
     }
 
 //    @RequestMapping("/users/{userId}")
