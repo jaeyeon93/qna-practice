@@ -14,20 +14,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+@RequestMapping("/users")
 public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @PostMapping("/user/create")
+    @PostMapping("")
     public String create(User usr) {
-        System.out.println("User : " + usr);
         userRepository.save(usr);
-        return "redirect:/user/list";
+        return "redirect:/users";
         // redirect:/url로 이동을 하게된다.
         // static에 있는 index.html이 아니라, templates에 있는 index.html을 호출을 한다.
     }
 
-    @GetMapping("/user/list")
+    @GetMapping("")
     public String list(Model model) {
         model.addAttribute("users", userRepository.findAll());
         return "/user/list";
