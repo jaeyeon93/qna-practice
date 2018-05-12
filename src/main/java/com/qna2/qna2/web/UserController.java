@@ -18,16 +18,16 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @PostMapping("/create")
+    @PostMapping("/user/create")
     public String create(User usr) {
         System.out.println("User : " + usr);
         userRepository.save(usr);
-        return "redirect:/users";
+        return "redirect:/user/list";
         // redirect:/url로 이동을 하게된다.
         // static에 있는 index.html이 아니라, templates에 있는 index.html을 호출을 한다.
     }
 
-    @GetMapping("/users")
+    @GetMapping("/user/list")
     public String list(Model model) {
         model.addAttribute("users", userRepository.findAll());
         return "list";
