@@ -16,6 +16,10 @@ public class QnA {
     private String title;
     private String contents;
 
+    public Long getId() {
+        return id;
+    }
+
     public String getWriter() {
         return writer;
     }

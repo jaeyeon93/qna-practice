@@ -22,26 +22,19 @@ public class UserController {
     @GetMapping("/form")
     public String form() {
         return "/user/form";
-        // /form url이 호출이 되면, /user디렉토리 밑에있는 form.html에 접근을 하게 된다.
     }
 
     @PostMapping("")
     public String create(User usr) {
         userRepository.save(usr);
         return "redirect:/users";
-        // redirect:/url로 이동을 하게된다.
-        // static에 있는 index.html이 아니라, templates에 있는 index.html을 호출을 한다.
     }
 
-    //users를 호출을 하면 templates폴더안에 있는 user/list.html을 호출한다.
     @GetMapping("")
     public String list(Model model) {
         model.addAttribute("users", userRepository.findAll());
         return "user/list";
     }
-
-
-
 
 //    @RequestMapping("/users/{userId}")
 //    public String getUser(@PathVariable String userId , Model model) {
