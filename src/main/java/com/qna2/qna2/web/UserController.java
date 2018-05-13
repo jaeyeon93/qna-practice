@@ -2,6 +2,7 @@ package com.qna2.qna2.web;
 
 import com.qna2.qna2.domain.User;
 import com.qna2.qna2.domain.UserRepository;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,5 +41,21 @@ public class UserController {
     public String getUser(@PathVariable Long id, Model model) {
         model.addAttribute("users", userRepository.findOne(id));
         return "/user/profile";
+    }
+
+    @GetMapping("{id}/form")
+    public String updateForm(@PathVariable Long id, Model model) {
+        User user = userRepository.findOne(id);
+        model.addAttribute("user", user);
+        // db에서 id에 해당하는 값을 조회를 해온다.
+        return "/user/updateForm";
+    }
+
+    @PostMapping("/{id}")
+    public String update(@PathVariable Long id, User newUser) {
+        User user = userRepository.findOne(id);
+        user.update(newUser);
+        userRepository.save(user);
+        return "redirect:/users";
     }
 }
