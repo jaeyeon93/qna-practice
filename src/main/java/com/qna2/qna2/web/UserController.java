@@ -19,6 +19,12 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @GetMapping("/form")
+    public String form() {
+        return "/user/form";
+        // /form url이 호출이 되면, /user디렉토리 밑에있는 form.html에 접근을 하게 된다.
+    }
+
     @PostMapping("")
     public String create(User usr) {
         userRepository.save(usr);
