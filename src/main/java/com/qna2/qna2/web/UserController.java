@@ -36,11 +36,9 @@ public class UserController {
         return "user/list";
     }
 
-//    @RequestMapping("/users/{userId}")
-//    public String getUser(@PathVariable String userId , Model model) {
-//            for (User user : users)
-//                if (user.getUserId().equals(userId))
-//                    model.addAttribute("user", user);
-//            return "profile";
-//    }
+    @GetMapping("/{id}")
+    public String getUser(@PathVariable Long id, Model model) {
+        model.addAttribute("users", userRepository.findOne(id));
+        return "/user/profile";
+    }
 }
