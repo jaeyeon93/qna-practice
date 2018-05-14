@@ -43,4 +43,9 @@ public class QnA {
     public void setContents(String contents) {
         this.contents = contents;
     }
+
+    public void update(QnA newQna) {
+        this.title = newQna.title;
+        this.contents = newQna.contents;
+    }
 }

@@ -2,13 +2,11 @@ package com.qna2.qna2.web;
 
 import com.qna2.qna2.domain.QnA;
 import com.qna2.qna2.domain.QnARepository;
+import com.qna2.qna2.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("questions")
@@ -37,5 +35,20 @@ public class QuestionController {
     public String getQnA(@PathVariable Long id, Model model) {
         model.addAttribute("questions", qnARepository.findOne(id));
         return "/qna/show";
+    }
+
+    @GetMapping("{id}/form")
+    public String updateForm(@PathVariable Long id, Model model) {
+        QnA qna = qnARepository.findOne(id);
+        model.addAttribute("qna", qna);
+        return "/qna/updateForm";
+    }
+
+    @PutMapping("/{id}")
+    public String editPost(@PathVariable Long id, QnA newQna) {
+        QnA qna = qnARepository.findOne(id);
+        qna.update(newQna);
+        qnARepository.save(qna);
+        return "redirect:/questions";
     }
 }
